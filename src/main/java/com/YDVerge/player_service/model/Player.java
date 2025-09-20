@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.YDVerge.player_service.decorator.PlayerRole;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -41,5 +43,17 @@ public class Player {
     
     @Transient
     private Map<StatType,Integer> stats = new HashMap<>();
+    public Player(String id) { this.playerId = id; }
+    
+    @Transient
+    private PlayerRole playerRole = new Adventurer();
+    
+    public PlayerRole getPlayerRole() {
+   	return playerRole;
+    }
+       
+    public void setPlayerRole(PlayerRole playerRole) {
+   	this.playerRole = playerRole;
+    }
     
 }
